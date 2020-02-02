@@ -1,0 +1,21 @@
+{
+  "name": "example-graphql-zeus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.js",
+  "dependencies": {
+    "@babel/runtime": "^7.8.4",
+    "graphql-zeus": "^2.5.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/register": "^7.8.3"
+  },
+  "scripts": {
+    "start": "node start.js"
+  },
+  "author": "Sez",
+  "license": "ISC"
+}

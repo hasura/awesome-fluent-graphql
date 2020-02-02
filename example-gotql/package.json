@@ -1,0 +1,15 @@
+{
+  "name": "example-gotql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sez",
+  "license": "ISC",
+  "dependencies": {
+    "gotql": "^1.7.1"
+  }
+}

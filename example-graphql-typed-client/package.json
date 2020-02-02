@@ -1,0 +1,15 @@
+{
+  "name": "example-graphql-typed-client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Sez",
+  "license": "ISC",
+  "dependencies": {
+    "graphql-typed-client": "^1.7.4"
+  },
+  "devDependencies": {},
+  "description": ""
+}

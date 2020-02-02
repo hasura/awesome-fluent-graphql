@@ -1,0 +1,8 @@
+{
+  "url": "MY_GRAPHQL_ENDPOINT",
+  "outputDir": "gqless-generated",
+  "usePost": "true",
+  "headers": {
+    "Authorization": "bearer MY_TOKEN"
+  }
+}

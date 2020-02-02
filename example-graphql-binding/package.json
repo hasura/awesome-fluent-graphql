@@ -1,0 +1,15 @@
+{
+  "name": "example-graphql-binding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sez",
+  "license": "ISC",
+  "dependencies": {
+    "graphql-binding": "^2.5.2",
+    "typescript": "^3.7.5"
+  }
+}
