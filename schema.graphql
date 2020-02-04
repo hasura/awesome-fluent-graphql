@@ -1,0 +1,861 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+# expression to compare columns of type Boolean. All fields are combined with logical 'AND'.
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
+}
+
+enum CacheControlScope {
+  PRIVATE
+  PUBLIC
+}
+
+# conflict action
+enum conflict_action {
+  # ignore the insert on this row
+  ignore
+
+  # update the row with the given values
+  update
+}
+
+# expression to compare columns of type Int. All fields are combined with logical 'AND'.
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+# mutation root
+type mutation_root {
+  # delete data from the table: "todos"
+  delete_todos(
+    # filter the rows which have to be deleted
+    where: todos_bool_exp!
+  ): todos_mutation_response
+
+  # delete data from the table: "users"
+  delete_users(
+    # filter the rows which have to be deleted
+    where: users_bool_exp!
+  ): users_mutation_response
+
+  # insert data into the table: "todos"
+  insert_todos(
+    # the rows to be inserted
+    objects: [todos_insert_input!]!
+
+    # on conflict condition
+    on_conflict: todos_on_conflict
+  ): todos_mutation_response
+
+  # insert data into the table: "users"
+  insert_users(
+    # the rows to be inserted
+    objects: [users_insert_input!]!
+
+    # on conflict condition
+    on_conflict: users_on_conflict
+  ): users_mutation_response
+
+  # update data of the table: "todos"
+  update_todos(
+    # increments the integer columns with given value of the filtered values
+    _inc: todos_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: todos_set_input
+
+    # filter the rows which have to be updated
+    where: todos_bool_exp!
+  ): todos_mutation_response
+
+  # update data of the table: "users"
+  update_users(
+    # increments the integer columns with given value of the filtered values
+    _inc: users_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: users_set_input
+
+    # filter the rows which have to be updated
+    where: users_bool_exp!
+  ): users_mutation_response
+}
+
+# column ordering options
+enum order_by {
+  # in the ascending order, nulls last
+  asc
+
+  # in the ascending order, nulls first
+  asc_nulls_first
+
+  # in the ascending order, nulls last
+  asc_nulls_last
+
+  # in the descending order, nulls first
+  desc
+
+  # in the descending order, nulls first
+  desc_nulls_first
+
+  # in the descending order, nulls last
+  desc_nulls_last
+}
+
+type Query {
+  hello: String
+}
+
+# query root
+type query_root {
+  hello: String
+
+  # fetch data from the table: "todos"
+  todos(
+    # distinct select on columns
+    distinct_on: [todos_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [todos_order_by!]
+
+    # filter the rows returned
+    where: todos_bool_exp
+  ): [todos!]!
+
+  # fetch aggregated fields from the table: "todos"
+  todos_aggregate(
+    # distinct select on columns
+    distinct_on: [todos_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [todos_order_by!]
+
+    # filter the rows returned
+    where: todos_bool_exp
+  ): todos_aggregate!
+
+  # fetch data from the table: "todos" using primary key columns
+  todos_by_pk(id: Int!): todos
+
+  # fetch data from the table: "users"
+  users(
+    # distinct select on columns
+    distinct_on: [users_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [users_order_by!]
+
+    # filter the rows returned
+    where: users_bool_exp
+  ): [users!]!
+
+  # fetch aggregated fields from the table: "users"
+  users_aggregate(
+    # distinct select on columns
+    distinct_on: [users_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [users_order_by!]
+
+    # filter the rows returned
+    where: users_bool_exp
+  ): users_aggregate!
+
+  # fetch data from the table: "users" using primary key columns
+  users_by_pk(id: Int!): users
+}
+
+# expression to compare columns of type String. All fields are combined with logical 'AND'.
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String!]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+# subscription root
+type subscription_root {
+  # fetch data from the table: "todos"
+  todos(
+    # distinct select on columns
+    distinct_on: [todos_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [todos_order_by!]
+
+    # filter the rows returned
+    where: todos_bool_exp
+  ): [todos!]!
+
+  # fetch aggregated fields from the table: "todos"
+  todos_aggregate(
+    # distinct select on columns
+    distinct_on: [todos_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [todos_order_by!]
+
+    # filter the rows returned
+    where: todos_bool_exp
+  ): todos_aggregate!
+
+  # fetch data from the table: "todos" using primary key columns
+  todos_by_pk(id: Int!): todos
+
+  # fetch data from the table: "users"
+  users(
+    # distinct select on columns
+    distinct_on: [users_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [users_order_by!]
+
+    # filter the rows returned
+    where: users_bool_exp
+  ): [users!]!
+
+  # fetch aggregated fields from the table: "users"
+  users_aggregate(
+    # distinct select on columns
+    distinct_on: [users_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [users_order_by!]
+
+    # filter the rows returned
+    where: users_bool_exp
+  ): users_aggregate!
+
+  # fetch data from the table: "users" using primary key columns
+  users_by_pk(id: Int!): users
+}
+
+# columns and relationships of "todos"
+type todos {
+  id: Int!
+  is_completed: Boolean!
+  text: String!
+
+  # An object relationship
+  user: users!
+  user_authID: String!
+}
+
+# aggregated selection of "todos"
+type todos_aggregate {
+  aggregate: todos_aggregate_fields
+  nodes: [todos!]!
+}
+
+# aggregate fields of "todos"
+type todos_aggregate_fields {
+  avg: todos_avg_fields
+  count(columns: [todos_select_column!], distinct: Boolean): Int
+  max: todos_max_fields
+  min: todos_min_fields
+  stddev: todos_stddev_fields
+  stddev_pop: todos_stddev_pop_fields
+  stddev_samp: todos_stddev_samp_fields
+  sum: todos_sum_fields
+  var_pop: todos_var_pop_fields
+  var_samp: todos_var_samp_fields
+  variance: todos_variance_fields
+}
+
+# order by aggregate values of table "todos"
+input todos_aggregate_order_by {
+  avg: todos_avg_order_by
+  count: order_by
+  max: todos_max_order_by
+  min: todos_min_order_by
+  stddev: todos_stddev_order_by
+  stddev_pop: todos_stddev_pop_order_by
+  stddev_samp: todos_stddev_samp_order_by
+  sum: todos_sum_order_by
+  var_pop: todos_var_pop_order_by
+  var_samp: todos_var_samp_order_by
+  variance: todos_variance_order_by
+}
+
+# input type for inserting array relation for remote table "todos"
+input todos_arr_rel_insert_input {
+  data: [todos_insert_input!]!
+  on_conflict: todos_on_conflict
+}
+
+# aggregate avg on columns
+type todos_avg_fields {
+  id: Float
+}
+
+# order by avg() on columns of table "todos"
+input todos_avg_order_by {
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "todos". All fields are combined with a logical 'AND'.
+input todos_bool_exp {
+  _and: [todos_bool_exp]
+  _not: todos_bool_exp
+  _or: [todos_bool_exp]
+  id: Int_comparison_exp
+  is_completed: Boolean_comparison_exp
+  text: String_comparison_exp
+  user: users_bool_exp
+  user_authID: String_comparison_exp
+}
+
+# unique or primary key constraints on table "todos"
+enum todos_constraint {
+  # unique or primary key constraint
+  todos_pkey
+}
+
+# input type for incrementing integer columne in table "todos"
+input todos_inc_input {
+  id: Int
+}
+
+# input type for inserting data into table "todos"
+input todos_insert_input {
+  id: Int
+  is_completed: Boolean
+  text: String
+  user: users_obj_rel_insert_input
+  user_authID: String
+}
+
+# aggregate max on columns
+type todos_max_fields {
+  id: Int
+  text: String
+  user_authID: String
+}
+
+# order by max() on columns of table "todos"
+input todos_max_order_by {
+  id: order_by
+  text: order_by
+  user_authID: order_by
+}
+
+# aggregate min on columns
+type todos_min_fields {
+  id: Int
+  text: String
+  user_authID: String
+}
+
+# order by min() on columns of table "todos"
+input todos_min_order_by {
+  id: order_by
+  text: order_by
+  user_authID: order_by
+}
+
+# response of any mutation on the table "todos"
+type todos_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [todos!]!
+}
+
+# input type for inserting object relation for remote table "todos"
+input todos_obj_rel_insert_input {
+  data: todos_insert_input!
+  on_conflict: todos_on_conflict
+}
+
+# on conflict condition type for table "todos"
+input todos_on_conflict {
+  constraint: todos_constraint!
+  update_columns: [todos_update_column!]!
+}
+
+# ordering options when selecting data from "todos"
+input todos_order_by {
+  id: order_by
+  is_completed: order_by
+  text: order_by
+  user: users_order_by
+  user_authID: order_by
+}
+
+# select columns of table "todos"
+enum todos_select_column {
+  # column name
+  id
+
+  # column name
+  is_completed
+
+  # column name
+  text
+
+  # column name
+  user_authID
+}
+
+# input type for updating data in table "todos"
+input todos_set_input {
+  id: Int
+  is_completed: Boolean
+  text: String
+  user_authID: String
+}
+
+# aggregate stddev on columns
+type todos_stddev_fields {
+  id: Float
+}
+
+# order by stddev() on columns of table "todos"
+input todos_stddev_order_by {
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type todos_stddev_pop_fields {
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "todos"
+input todos_stddev_pop_order_by {
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type todos_stddev_samp_fields {
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "todos"
+input todos_stddev_samp_order_by {
+  id: order_by
+}
+
+# aggregate sum on columns
+type todos_sum_fields {
+  id: Int
+}
+
+# order by sum() on columns of table "todos"
+input todos_sum_order_by {
+  id: order_by
+}
+
+# update columns of table "todos"
+enum todos_update_column {
+  # column name
+  id
+
+  # column name
+  is_completed
+
+  # column name
+  text
+
+  # column name
+  user_authID
+}
+
+# aggregate var_pop on columns
+type todos_var_pop_fields {
+  id: Float
+}
+
+# order by var_pop() on columns of table "todos"
+input todos_var_pop_order_by {
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type todos_var_samp_fields {
+  id: Float
+}
+
+# order by var_samp() on columns of table "todos"
+input todos_var_samp_order_by {
+  id: order_by
+}
+
+# aggregate variance on columns
+type todos_variance_fields {
+  id: Float
+}
+
+# order by variance() on columns of table "todos"
+input todos_variance_order_by {
+  id: order_by
+}
+
+# The `Upload` scalar type represents a file upload.
+scalar Upload
+
+# columns and relationships of "users"
+type users {
+  authID: String!
+  id: Int!
+  name: String!
+
+  # An array relationship
+  todos(
+    # distinct select on columns
+    distinct_on: [todos_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [todos_order_by!]
+
+    # filter the rows returned
+    where: todos_bool_exp
+  ): [todos!]!
+
+  # An aggregated array relationship
+  todos_aggregate(
+    # distinct select on columns
+    distinct_on: [todos_select_column!]
+
+    # limit the nuber of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [todos_order_by!]
+
+    # filter the rows returned
+    where: todos_bool_exp
+  ): todos_aggregate!
+}
+
+# aggregated selection of "users"
+type users_aggregate {
+  aggregate: users_aggregate_fields
+  nodes: [users!]!
+}
+
+# aggregate fields of "users"
+type users_aggregate_fields {
+  avg: users_avg_fields
+  count(columns: [users_select_column!], distinct: Boolean): Int
+  max: users_max_fields
+  min: users_min_fields
+  stddev: users_stddev_fields
+  stddev_pop: users_stddev_pop_fields
+  stddev_samp: users_stddev_samp_fields
+  sum: users_sum_fields
+  var_pop: users_var_pop_fields
+  var_samp: users_var_samp_fields
+  variance: users_variance_fields
+}
+
+# order by aggregate values of table "users"
+input users_aggregate_order_by {
+  avg: users_avg_order_by
+  count: order_by
+  max: users_max_order_by
+  min: users_min_order_by
+  stddev: users_stddev_order_by
+  stddev_pop: users_stddev_pop_order_by
+  stddev_samp: users_stddev_samp_order_by
+  sum: users_sum_order_by
+  var_pop: users_var_pop_order_by
+  var_samp: users_var_samp_order_by
+  variance: users_variance_order_by
+}
+
+# input type for inserting array relation for remote table "users"
+input users_arr_rel_insert_input {
+  data: [users_insert_input!]!
+  on_conflict: users_on_conflict
+}
+
+# aggregate avg on columns
+type users_avg_fields {
+  id: Float
+}
+
+# order by avg() on columns of table "users"
+input users_avg_order_by {
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'.
+input users_bool_exp {
+  _and: [users_bool_exp]
+  _not: users_bool_exp
+  _or: [users_bool_exp]
+  authID: String_comparison_exp
+  id: Int_comparison_exp
+  name: String_comparison_exp
+  todos: todos_bool_exp
+}
+
+# unique or primary key constraints on table "users"
+enum users_constraint {
+  # unique or primary key constraint
+  users_authID_key
+
+  # unique or primary key constraint
+  users_pkey
+}
+
+# input type for incrementing integer columne in table "users"
+input users_inc_input {
+  id: Int
+}
+
+# input type for inserting data into table "users"
+input users_insert_input {
+  authID: String
+  id: Int
+  name: String
+  todos: todos_arr_rel_insert_input
+}
+
+# aggregate max on columns
+type users_max_fields {
+  authID: String
+  id: Int
+  name: String
+}
+
+# order by max() on columns of table "users"
+input users_max_order_by {
+  authID: order_by
+  id: order_by
+  name: order_by
+}
+
+# aggregate min on columns
+type users_min_fields {
+  authID: String
+  id: Int
+  name: String
+}
+
+# order by min() on columns of table "users"
+input users_min_order_by {
+  authID: order_by
+  id: order_by
+  name: order_by
+}
+
+# response of any mutation on the table "users"
+type users_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [users!]!
+}
+
+# input type for inserting object relation for remote table "users"
+input users_obj_rel_insert_input {
+  data: users_insert_input!
+  on_conflict: users_on_conflict
+}
+
+# on conflict condition type for table "users"
+input users_on_conflict {
+  constraint: users_constraint!
+  update_columns: [users_update_column!]!
+}
+
+# ordering options when selecting data from "users"
+input users_order_by {
+  authID: order_by
+  id: order_by
+  name: order_by
+  todos_aggregate: todos_aggregate_order_by
+}
+
+# select columns of table "users"
+enum users_select_column {
+  # column name
+  authID
+
+  # column name
+  id
+
+  # column name
+  name
+}
+
+# input type for updating data in table "users"
+input users_set_input {
+  authID: String
+  id: Int
+  name: String
+}
+
+# aggregate stddev on columns
+type users_stddev_fields {
+  id: Float
+}
+
+# order by stddev() on columns of table "users"
+input users_stddev_order_by {
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type users_stddev_pop_fields {
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "users"
+input users_stddev_pop_order_by {
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type users_stddev_samp_fields {
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "users"
+input users_stddev_samp_order_by {
+  id: order_by
+}
+
+# aggregate sum on columns
+type users_sum_fields {
+  id: Int
+}
+
+# order by sum() on columns of table "users"
+input users_sum_order_by {
+  id: order_by
+}
+
+# update columns of table "users"
+enum users_update_column {
+  # column name
+  authID
+
+  # column name
+  id
+
+  # column name
+  name
+}
+
+# aggregate var_pop on columns
+type users_var_pop_fields {
+  id: Float
+}
+
+# order by var_pop() on columns of table "users"
+input users_var_pop_order_by {
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type users_var_samp_fields {
+  id: Float
+}
+
+# order by var_samp() on columns of table "users"
+input users_var_samp_order_by {
+  id: order_by
+}
+
+# aggregate variance on columns
+type users_variance_fields {
+  id: Float
+}
+
+# order by variance() on columns of table "users"
+input users_variance_order_by {
+  id: order_by
+}
+
