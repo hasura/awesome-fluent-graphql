@@ -9,6 +9,7 @@
 - [JavaScript](#javascript)
 - [Ruby](#ruby)
 - [Python](#python)
+- [Go](#go)
 
 ## JavaScript
 
@@ -28,3 +29,7 @@
 # Python
 
 - [sgqlc](https://github.com/profusion/sgqlc): Simple GraphQL Client for Python uses declared types to generate and interpret GraphQL queries.
+
+# Go
+
+- [shurcooL/graphql](https://github.com/shurcooL/graphql): GraphQL client implementation for Go that generates a query in the background as you type.
