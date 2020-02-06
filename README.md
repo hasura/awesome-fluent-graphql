@@ -8,6 +8,7 @@
 
 - [JavaScript](#javascript)
 - [Ruby](#ruby)
+- [Python](#python)
 
 ## JavaScript
 
