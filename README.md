@@ -4,6 +4,13 @@
 
 > More info: [link to blog post]
 
+## Contents
+
+- [JavaScript](#javascript)
+- [Ruby](#ruby)
+
+## JavaScript
+
 - [gotql](https://github.com/khaosdoctor/gotql): gotql works like a transpiler, with a built-in HTTPRequest Client ([Got](https://github.com/sindresorhus/got)), allowing you to write your GraphQL queries as objects instead of strings. | [Example](https://github.com/hasura/awesome-fluent-graphql/tree/master/example-gotql)
 - [graphql-zeus](https://github.com/graphql-editor/graphql-zeus): graphql-zeus creates an autocomplete client library for JavaScript or TypeScript. | [Example](https://github.com/hasura/awesome-fluent-graphql/tree/master/example-graphql-zeus)
 - [gqless](https://github.com/samdenty/gqless): With gqless, your queries are auto-generated at runtime! Using ES6 Proxies, gqless converts object property lookups into GraphQL queries. | [Example](https://github.com/hasura/awesome-fluent-graphql/tree/master/example-gqless-react)
@@ -12,3 +19,11 @@
 - [graphql-codegen-hasura](https://github.com/ahrnee/graphql-codegen-hasura): graphql-codegen-hasura is a collection of plugins for graphql-code-generator, with strongly typed wrappers for all the Hasura GraphQL methods. | [Example](https://TODO)
 - [graphql-binding](https://github.com/dotansimha/graphql-binding): graphql-binding allows you to invoke a binding function which constructs a GraphQL request.
 - [mst-gql](https://github.com/mobxjs/mst-gql): mst-gql allows type reuse between GraphQL and MobX-state-tree, and generates a query builder for chaining.
+
+# Ruby
+
+- [GQLi](https://github.com/contentful-labs/gqli.rb): A GraphQL consumer domain-specific language that allows you to write GraphQL queries in native Ruby. | [Blog post](https://www.contentful.com/blog/2018/11/20/graphql-ruby-love-backend-developer/)
+
+# Python
+
+- [sgqlc](https://github.com/profusion/sgqlc): Simple GraphQL Client for Python uses declared types to generate and interpret GraphQL queries.
