@@ -2,7 +2,7 @@
 
 > A curated collection of fluent API clients that make working with `GraphQL` awesome, along with examples.
 
-> More info: [link to blog post]
+> More info: [Fluent GraphQL clients: how to write queries like a boss](https://hasura.io/blog/fluent-graphql-clients-how-to-write-queries-like-a-boss)
 
 ## Contents
 
