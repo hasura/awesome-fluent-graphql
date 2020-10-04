@@ -14,6 +14,7 @@
 ## JavaScript
 
 - [gotql](https://github.com/khaosdoctor/gotql): gotql works like a transpiler, with a built-in HTTPRequest Client ([Got](https://github.com/sindresorhus/got)), allowing you to write your GraphQL queries as objects instead of strings. | [Example](https://github.com/hasura/awesome-fluent-graphql/tree/master/example-gotql)
+- [genql](https://github.com/remorses/genql): Type safe Graphql query builder and client
 - [graphql-zeus](https://github.com/graphql-editor/graphql-zeus): graphql-zeus creates an autocomplete client library for JavaScript or TypeScript. | [Example](https://github.com/hasura/awesome-fluent-graphql/tree/master/example-graphql-zeus)
 - [gqless](https://github.com/samdenty/gqless): With gqless, your queries are auto-generated at runtime! Using ES6 Proxies, gqless converts object property lookups into GraphQL queries. | [Example](https://github.com/hasura/awesome-fluent-graphql/tree/master/example-gqless-react)
 - [graphql-typed-client](https://github.com/helios1138/graphql-typed-client): graphql-typed-client generates a strongly typed client library for any GraphQL endpoint. It allows writing queries as plain JS objects, with optional chain syntax. | [Example](https://github.com/hasura/awesome-fluent-graphql/tree/master/example-graphql-typed-client)
