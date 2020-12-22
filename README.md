@@ -7,6 +7,7 @@
 ## Contents
 
 - [JavaScript](#javascript)
+- [TypeScript](#typescript)
 - [Ruby](#ruby)
 - [Python](#python)
 - [Go](#go)
@@ -21,6 +22,10 @@
 - [graphql-codegen-hasura](https://github.com/ahrnee/graphql-codegen-hasura): graphql-codegen-hasura is a collection of plugins for graphql-code-generator, with strongly typed wrappers for all the Hasura GraphQL methods. | [Example](https://TODO)
 - [graphql-binding](https://github.com/dotansimha/graphql-binding): graphql-binding allows you to invoke a binding function which constructs a GraphQL request.
 - [mst-gql](https://github.com/mobxjs/mst-gql): mst-gql allows type reuse between GraphQL and MobX-state-tree, and generates a query builder for chaining.
+
+# TypeScript
+
+- [tql](https://github.com/timkendall/tql): Write type-safe GraphQL queries with TypeScript. | [Example](https://github.com/hasura/awesome-fluent-graphql/tree/master/example-tql)
 
 # Ruby
 
