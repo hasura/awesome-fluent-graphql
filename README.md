@@ -33,4 +33,4 @@
 # Go
 
 - [shurcooL/graphql](https://github.com/shurcooL/graphql): GraphQL client implementation for Go that generates a query in the background as you type.
-- [mergestat/fluentgraphql](https://github.com/mergestat/fluentgraphql): Fluent GraphQL client implementation in go for dynamically creating queries.
+- [mergestat/fluentgraphql](https://github.com/mergestat/fluentgraphql): Fluent GraphQL client implementation in Go for dynamically creating queries.
